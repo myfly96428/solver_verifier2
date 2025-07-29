@@ -239,7 +239,7 @@ class DebateManager {
         this.socket.emit('status-update', { status: 'Muse正在进行首次批判...' });
 
         // 构建移动窗口：获取上一轮方案的历史对话信息
-        const previousCycleContext = this.getPreviousCycleContext('full');
+        const previousCycleContext = this.getPreviousCycleContext('muse-final-critique');
 
         // 根据是否是第一个周期调整context
         let contextDescription;
