@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual AI Chat - 双AI辩论聊天应用</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Dual AI Chat</h1>
+            <p>双AI辩论聊天应用 - 让Cognito和Muse为您的问题进行深度辩论</p>
+            <div style="margin-top: 10px;">
+                <a href="/logs.html" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">📊 查看日志</a>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- 配置面板 -->
+            <div class="config-panel">
+                <div class="config-header">
+                    <h4 class="config-title">⚙️ 配置</h4>
+                    <button class="config-toggle" id="config-toggle">−</button>
+                </div>
+                <div class="config-content" id="config-content">
+                    <div class="model-selection">
+                        <div class="model-group">
+                            <label for="cognito-model">Cognito模型</label>
+                            <input type="text" id="cognito-model" placeholder="gpt-4, claude-3, gemini-pro" value="gemini-2.5-pro">
+                        </div>
+                        <div class="model-group">
+                            <label for="muse-model">Muse模型</label>
+                            <input type="text" id="muse-model" placeholder="gpt-4, claude-3, gemini-pro" value="gemini-2.5-pro">
+                        </div>
+                    </div>
+                    
+                    <div class="api-config">
+                        <div class="api-group">
+                            <label for="api-key">API Key</label>
+                            <input type="password" id="api-key" placeholder="输入您的API Key" value="">
+                            <div class="security-note">🔒 您的API Key仅在本地存储，不会上传到服务器</div>
+                        </div>
+                        <div class="api-group">
+                            <label for="base-url">Base URL</label>
+                            <input type="text" id="base-url" placeholder="https://api.openai.com/v1" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心方案显示区域 -->
+            <div class="solution-panel">
+                <h3>核心方案 <span id="solution-version">v1.0</span></h3>
+                <div id="solution-content" class="solution-content">
+                    等待生成初始方案...
+                </div>
+            </div>
+
+            <!-- 辩论区域 -->
+            <div class="debate-area">
+                <div id="chat-messages" class="chat-messages"></div>
+                <div id="status" class="status">准备就绪</div>
+            </div>
+
+            <!-- 控制面板 -->
+            <div class="control-panel">
+                <div class="input-group">
+                    <textarea id="question-input" placeholder="请输入您的问题，让Cognito和Muse为您进行深度辩论分析..."></textarea>
+                    <button id="send-btn" class="send-btn">发送</button>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="stop-btn" class="action-btn" disabled>⏸️ 暂停</button>
+                    <button id="force-end-btn" class="action-btn" disabled>⏹️ 提前结束</button>
+                    <button id="resume-btn" class="action-btn" disabled>🔄 恢复辩论</button>
+                    <button id="clear-btn" class="action-btn">🗑️ 清除</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最终答案显示 -->
+        <div id="final-answer" class="final-answer" style="display: none;">
+            <h2>🎯 最终答案</h2>
+            <div id="final-content"></div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
