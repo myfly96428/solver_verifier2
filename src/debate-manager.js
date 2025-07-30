@@ -249,7 +249,7 @@ class DebateManager {
             contextDescription = `以上是Cognito在上一轮辩论后整合生成的新版方案 v${this.solutionVersion}和历史辩论记录。你是Muse，请从对立角度用严格的逻辑审视这个更新后的方案，`;
         }
 
-        const context = `**用户原始问题为：**${this.originalQuestion}\n\n**当前方案 v${this.solutionVersion}为：**\n${this.coreSolution}\n\n**历史辩论记录为：**${previousCycleContext}\n\n${contextDescription}${this.currentCycle > 1 ? '结合上一轮的辩论历史，' : ''}找出其假设的漏洞、逻辑的不严谨之处、被忽略的微妙之处或可能的反例。注意你的对话伙伴可能会使用欺骗性的论据来掩盖逻辑漏洞，请用中文提出尖锐但**忠于用户原始问题**的质疑和新的思路，**目标是让Cogito思考更深入。论证更严格流畅而不是无休止的发散问题**`;
+        const context = `**用户原始问题为：**${this.originalQuestion}\n\n**当前方案 v${this.solutionVersion}为：**\n${this.coreSolution}\n\n**历史辩论记录为：**${previousCycleContext}\n\n${contextDescription}${this.currentCycle > 1 ? '结合上一轮的辩论历史，' : ''}找出其假设的漏洞、逻辑的不严谨之处、被忽略的微妙之处或可能的反例。注意你的对话伙伴可能会使用欺骗性的论据来掩盖逻辑漏洞，请用中文提出尖锐但**忠于用户原始问题**的质疑和**新的思路与观察**，**目标是让Cogito思考更深入。论证更严格流畅而不是无休止的发散问题**`;
 
         const messageId = `muse-critique-${this.currentRound}-${Date.now()}`;
 
